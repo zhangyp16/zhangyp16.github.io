@@ -1,0 +1,139 @@
+body {
+	margin:0px;
+	bottom:0px;
+	font-family: youyuan, STFangSong, Helvetica, Arial, Vernada, Tahoma, STXihei, "Microsoft YaHei", "Songti SC", SimSun, Heiti, sans-serif;
+	font-size: 18px;
+	line-height: 1.42857143;
+}
+.cul{
+	display: block;
+	list-style-type: disc;
+	padding-left:0px;
+	-webkit-margin-before: 0px;
+}
+.cli{
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: -1px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+a{
+	color: #428bca;
+	text-decoration: none;
+}
+a:active{
+	test:expression(target="_blank");
+}
+.category{
+	width:200px;
+	height:30px;
+	position:fixed;
+	bottom:20px;
+	margin:0px;
+	display:-webkit-box;
+	-webkit-box-orient:horizontal;
+} 
+.icon{
+	-webkit-box-flex:1;
+}
+.icon img{
+	height:30px;
+}
+
+blockquote  {
+	margin:0px;
+	padding:1px 10px 1px 40px;
+	border-left-style:solid;
+	border-left-color:#555;
+	border-left-width:5px;
+	background-color:#ECECEC;
+	color:#777;
+}
+.post-container {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	width:80%;
+	padding:60px 50px 50px 50px;
+}
+
+.post-container h1 {
+	text-align:center;
+	border-bottom-style:solid;
+	padding:10px;
+	margin-bottom:20px;
+}
+
+.post-container h2 {
+	background-color: #000;
+	color: #FFF;
+	padding: 8px;
+	border-left-width: 12px;
+	border-left-style: solid;
+	border-left-color: #D00;	
+}
+
+.post-container img {
+	max-width:100%;
+}	
+
+.post-container strong {
+	color:#0AD;
+}
+
+.post-container table {
+	border:1px solid #333;
+	width:100%;
+	color:#333;
+}
+
+.post-container th {
+	padding:10px;
+	border-bottom:1px solid #333;
+}
+
+.post-container td {
+	padding:10px;
+}
+
+th+th, td+td {
+	border-left:1px solid #333;
+}
+
+code {
+	padding:2px;
+	background:#a84;
+	font-size:13px;
+	line-height:14px;
+	border-radius:3px;
+	color:#fff;
+}
+
+.tool{
+	display:inline-block;
+	width:100%;
+	background-color:rgba(255, 255, 255, 0.9);
+	position:fixed;
+	border-bottom:1px solid #DDD;
+	top:0;
+}
+
+.tool span{
+	display:inline-block;
+	padding:10px;
+	color:#AAA;
+	margin-left:10px;
+}
+
+.links{
+	padding:10px;
+	float:right;
+}
+
+.links a{
+	display:inline-block;
+	color:black;
+	margin-right:15px;
+}
