@@ -24,6 +24,26 @@
 		</div>
 	</div>
 
+	<p>
+		<p>1、将.idea目录加入ignore清单</p>
+		<p>echo '.idea' >>.gitignore</p>
+
+		<p>2、从git中删除idea</p>
+
+ 		<p>git rm --cached -r .idea</p>
+
+		<p>3、将.gitignore文件加入git</p>
+
+		<p>git add .gitignore</p>
+		<p>4、提交gitiginore文件，将.idea从源代码仓库中删除</p>
+
+		<p>git commit -m '(gitignore commit and remove .idea)'</p>
+
+		<p>5、push到服务器</p>
+
+		<p>git push origin master</p>
+	</p>
+
 	
 	<script type="text/javascript" src="../assets/js/main.js"></script>
 
