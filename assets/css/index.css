@@ -6,7 +6,7 @@ html,body {
 	padding: 0;
 }
 div{
-	margin:5px;
+	
 	border:0;
 	padding:0;
 }
@@ -14,17 +14,19 @@ div{
 	min-height: 100%;
 	height: auto;
 	height: 100%;
+	width: 1000px;
 	margin: 0 auto -60px;
 	text-align: center;
 }
 #header {
-	height: 20%;
+	height: 50px;
 	width: 100%;
+	background-color: rgba(76, 167, 166, 0.9);
 }
 
 #page {
 
-	height: 70%;
+	height: 600px;
 	width: 100%;
 }
 
@@ -32,22 +34,22 @@ div{
 	border: 1px;
 	float: left;
 	width: 20%;
-	height: 70%;
+	height: 100%;
 	background-color:#C0C0C0;
 }
 #content {
 	border: 1px;
-	float: center;
+	float: left;
 	width: 70%;
-	height: 70%;
+	height: 100%;
 	background-color:#C0C0C0;
 }
 #content-right {
 	border: 1px;
 	float: right;
 	width: 10%;
-	height: 70%;
-	background-color:purple;
+	height: 100%;
+	background-color:#C0C0C0;
 }
 #footer {
 	
