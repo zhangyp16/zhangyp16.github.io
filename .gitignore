@@ -1,0 +1,14 @@
+*.iml
+.DS_Store
+*.class
+/*.class
+/.idea
+/.idea/*
+.idea
+/out
+/out/*
+/node_modules/*
+target
+/target/*
+!.gitignore
+.idea
