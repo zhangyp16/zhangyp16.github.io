@@ -20,6 +20,71 @@
         <version>2.8.1</version>
     </dependency>
 
+
+</p>
+
+<p>
+    Spring :
+
+</p>
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-4.0.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <bean id="jacksonAnnotationIntrospector" class="com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector"/>
+    <!--  -->
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean class="com.best.v8.api.global.TokenValueResolver"/>
+        </mvc:argument-resolvers>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="serializationInclusion">
+                            <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+                        </property>
+                        <property name="annotationIntrospector" ref="jacksonAnnotationIntrospector"/>
+                    </bean>
+                </property>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:default-servlet-handler/>
+
+    <context:component-scan base-package="com.best.v8.api"/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/template/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/api/**"/>
+            <mvc:exclude-mapping path="/api/proxy"/>
+            <bean class="com.best.v8.api.global.ApiTokenInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
+</pre>
+
     
 </p>
 </body>
