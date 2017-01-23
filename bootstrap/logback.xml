@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration>
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${app.log.path:-C:\\}v8-api.log</file>
+        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <!--日志输出位置  可相对、和绝对路径 -->
+            <fileNamePattern>${app.log.path:-C:\\}v8-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %5p %-40logger{40}:%L[%t] - %m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!-- ConsoleAppender 控制台输出日志 -->  
+    <appender name='CONSOLE' class='ch.qos.logback.core.ConsoleAppender'>
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %5p %-40logger{40}:%L[%t] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="API_CALL_LOGGER" class="com.best.neptune.commons.logger.logback.extension.AsyncRollingAndMergeFileAppender">
+        <file>${app.log.path:-C:\\}api_call.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${app.log.path:-C:\\}api_call.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm},%m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- 异步日志Map初始化容量 -->
+        <initialCapacity>512</initialCapacity>
+        <!-- 日志刷盘时间间隔，单位毫秒 -->
+        <monitorCycle>1000</monitorCycle>
+    </appender>
+
+    <appender name="CACHE_HIT_LOGGER" class="com.best.neptune.commons.logger.logback.extension.AsyncRollingAndMergeFileAppender">
+        <file>${app.log.path:-C:\\}cache_hit.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${app.log.path:-C:\\}cache_hit.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm},%m%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- 异步日志Map初始化容量 -->
+        <initialCapacity>512</initialCapacity>
+        <!-- 日志刷盘时间间隔，单位毫秒 -->
+        <monitorCycle>1000</monitorCycle>
+    </appender>
+
+    <logger name="API_CALL" level="INFO" additivity="false">
+        <appender-ref ref="API_CALL_LOGGER" />
+    </logger>
+
+    <logger name="CACHE_HIT" level="INFO" additivity="false">
+        <appender-ref ref="CACHE_HIT_LOGGER" />
+    </logger>
+
+    <logger name='org.springframework' level="INFO" />
+    <logger name='com.best.v8' level="INFO" />
+    <!-- 用于打印SQL -->
+    <!--<logger name="java.sql.PreparedStatement" level="DEBUG" />
+    <logger name="com.best.v8.common.biz.dao" level="DEBUG" />-->
+
+    <root>
+        <level value='INFO'/>
+        <appender-ref ref='FILE'/>
+        <!--<appender-ref ref='CONSOLE'/>-->
+    </root>
+</configuration>

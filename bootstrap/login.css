@@ -1,0 +1,13 @@
+body{
+	text-align: center;
+}
+.header{
+	height: 100px;
+
+}
+#login-form{
+	margin: 0 auto;
+	height: 500px;
+	width: 375px;
+
+}
